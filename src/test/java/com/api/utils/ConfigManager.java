@@ -28,8 +28,6 @@ public  class ConfigManager {
 
         }
 
-
-
         try {
            InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
 
