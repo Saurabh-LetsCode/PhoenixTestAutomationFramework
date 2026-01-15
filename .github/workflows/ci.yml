@@ -16,6 +16,12 @@ on:
         options: [qa,uat,dev]
         default: qa
         required: true
+      suiteXmlFile: 
+        description: "Testng XML File"
+        type: choice
+        options: [testng.xml,smoke.xml,regression.xml]
+        default: testng.xml
+        required: true
 
 jobs:
   test:
@@ -29,7 +35,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Execute Test Automation Framework
-      run: mvn clean test -Denv="${{ github.event.inputs.env }}" -DsuiteXmlFile=testng.xml
+      run: mvn clean test -Denv="${{ github.event.inputs.env }}" -DsuiteXmlFile="${{ github.event.inputs.suiteXmlFile }}"
 
     - name: Upload a Build Artifact
       if: always()
