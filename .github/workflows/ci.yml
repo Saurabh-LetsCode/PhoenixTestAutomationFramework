@@ -36,7 +36,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Execute Test Automation Framework
-      run: mvn clean test -Denv="${{ github.event.inputs.env }}" -DsuiteXmlFile="${{ github.event.inputs.suiteXmlFile }}"
+      run: mvn clean test -Denv="${{ github.event.inputs.env || 'qa' }}" -DsuiteXmlFile="${{ github.event.inputs.suiteXmlFile || 'testng.xml' }}"
 
     - name: Upload a Build Artifact
       if: always()
