@@ -3,8 +3,8 @@ package com.api.tests;
 import  static io.restassured.RestAssured.*;
 
 import com.api.constant.Role;
-import com.api.pojo.*;
 
+import com.api.request.model.*;
 import com.api.utils.SpecUtil;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
