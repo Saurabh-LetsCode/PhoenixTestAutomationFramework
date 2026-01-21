@@ -5,12 +5,15 @@ import  static io.restassured.RestAssured.*;
 import com.api.constant.Role;
 
 import com.api.request.model.*;
+import static com.api.utils.DateTimeUtil.*;
 import com.api.utils.SpecUtil;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Test;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +24,8 @@ public class CreateJobAPITest {
     public void createJobAPITest(){
 
         Customer customer = new Customer("Jatin","Jasani","7507331188","","saurabh.jasani@gmail.com","");
-
         CustomerAddress customerAddress = new CustomerAddress("801","Vasant  Galaxy","Balewadi Street","Near orchid school","Balewadi","411006","Indian","MH");
-        CustomerProduct customerProduct = new CustomerProduct("2025-04-06T18:30:00.000Z","12308828001005","12308828001005","12308828001005","2025-04-06T18:30:00.000Z",1,1);
+        CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10),"12308899001005","12308899001005","12308899001005",getTimeWithDaysAgo(10),1,1);
         Problems problems = new Problems(1,"Battery Issue");
         List<Problems> problemsList = new ArrayList<>();
         problemsList.add(problems);
