@@ -1,6 +1,8 @@
 package com.demo.csv;
 
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -8,22 +10,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
-public class ReadCSVFile {
+public class ReadCSVFile_MapToPOJO {
 
     public static void main(String[] args) throws IOException, CsvException {
 
        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("testData/LoginCreds.csv");
-
-
         InputStreamReader isr = new InputStreamReader(is);
         CSVReader csvReader = new CSVReader(isr);
 
-        List<String[]> dataList = csvReader.readAll();
+        CsvToBean<UserPOJO> csvToBean= new CsvToBeanBuilder<UserPOJO>(csvReader).withType(UserPOJO.class).withIgnoreEmptyLine(true).build();
 
-       for (String[] dataArray : dataList){
-
-           System.out.println(dataArray[0]);
-           System.out.println(dataArray[1]);
-       }
+        List<UserPOJO> userList = csvToBean.parse();
+        System.out.println(userList);
     }
 }
