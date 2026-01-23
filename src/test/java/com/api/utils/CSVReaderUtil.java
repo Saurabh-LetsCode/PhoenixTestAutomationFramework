@@ -1,20 +1,23 @@
-package com.demo.csv;
+package com.api.utils;
 
+import com.dataproviders.api.bean.UserBean;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvException;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
-public class ReadCSVFile_MapToPOJO {
+public class CSVReaderUtil {
 
-    public static void main(String[] args) throws IOException, CsvException {
+    private CSVReaderUtil(){
 
-       InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("testData/LoginCreds.csv");
+    }
+
+    public static void loadCSV(String pathOfCSVFile)  {
+
+        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathOfCSVFile);
         InputStreamReader isr = new InputStreamReader(is);
         CSVReader csvReader = new CSVReader(isr);
 
