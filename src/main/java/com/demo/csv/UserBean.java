@@ -1,17 +1,18 @@
 package com.demo.csv;
 
-public class UserPOJO {
+import com.opencsv.bean.CsvBindByName;
+
+public class UserBean {
+    @CsvBindByName(column = "username")
     private String username;
+
+    @CsvBindByName(column = "password")
     private String password;
 
-    public UserPOJO(){
+    public UserBean(){
 
     }
 
-    public UserPOJO(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;
@@ -31,7 +32,7 @@ public class UserPOJO {
 
     @Override
     public String toString() {
-        return "UserPOJO{" +
+        return "UserBean{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
