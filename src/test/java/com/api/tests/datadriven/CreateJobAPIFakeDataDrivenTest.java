@@ -1,14 +1,9 @@
 package com.api.tests.datadriven;
 
-import com.api.constant.*;
-import com.api.request.model.*;
-import org.testng.annotations.BeforeMethod;
+import com.api.constant.Role;
+import com.api.request.model.CreateJobPayload;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.api.utils.DateTimeUtil.getTimeWithDaysAgo;
 import static com.api.utils.SpecUtil.requestSpecWithAuth;
 import static com.api.utils.SpecUtil.responseSpec_OK;
 import static io.restassured.RestAssured.given;
@@ -16,15 +11,15 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.startsWith;
 
-public class CreateJobAPIDataDrivenTest {
+public class CreateJobAPIFakeDataDrivenTest {
 
     private CreateJobPayload createJobPayload;
 
 
     @Test(description = "Verifying if create job API is able to create Inwarranty Jobs",
-            groups = {"api","regression","datadriven","csv"},
+            groups = {"api","regression","datadriven","faker"},
             dataProviderClass = com.dataproviders.DataProviderUtils.class,
-            dataProvider = "CreateJobAPIDataProvider")
+            dataProvider = "CreateJobAPIFakerDataProvider")
 
     public void createJobAPITest(CreateJobPayload createJobPayload){
 
